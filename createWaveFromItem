@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p "$HOME/.local/share/dvkbuntu/"
+google_speech -l fr-fr "$1" -o "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
