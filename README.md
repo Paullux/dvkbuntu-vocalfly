@@ -22,4 +22,4 @@ Une fois l'installation terminée, veuillez redémarrer votre ordinateur !
 ajoutez le à votre interface (cf. https://youtu.be/Tcfi6fivGys) , il s'agit d'un menu assez simple avec de grosses icônes qui grossissent au passage de la souris.
 
 # Pour utiliser d'autre langue à vocaliser :
-dans le script createWaveFromItem il faut remplacer `-l fr-fr``par votre langue. (fr-fr = langue française en France).
+Le programme va lire la langue de votre système afin de s'adapter à la langue de l'utilisateur.
