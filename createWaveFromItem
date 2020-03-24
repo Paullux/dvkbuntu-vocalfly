@@ -1,4 +1,19 @@
 #!/bin/bash
 
 mkdir -p "$HOME/.local/share/dvkbuntu/"
-google_speech -l fr-fr "$1" -o "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+
+BCP47=$(printf $LANG | cut -d'.' -f1 | sed -e 's/_/-/g' | tr '[:upper:]' '[:lower:]')
+
+google_speech -l "$BCP47" "$1" -o "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+
+if [ $? -ne 0 ]
+then
+BCP47=$(printf "$BCP47" | cut -d'-' -f1)
+ 
+google_speech -l "$BCP47" "$1" -o "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+fi
+
+if [ $? -ne 0 ]
+then 
+google_speech "$1" -o "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+fi
