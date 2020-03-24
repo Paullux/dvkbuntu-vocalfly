@@ -462,7 +462,6 @@ Column {
 
         if (isGroup && modelExists) {
             if (model.display === undefined) {
-                qprocess.launch('createWaveFromItem ""');
                 return "";
             }
             text = model.display.toString();
