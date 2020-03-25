@@ -452,8 +452,10 @@ Column {
     }
 
     function generateTitle() {
-        if (!isWin) {
-            if (genericName != undefined) { qprocess.launch('createWaveFromItem "' + appName.toString() + '"'); }
+        
+        if (genericName != undefined) { qprocess.launch('createWaveFromItem "' + appName.toString() + '"'); }
+        
+        if (!isWin) {            
             return genericName != undefined ? genericName : "";
         }
 
