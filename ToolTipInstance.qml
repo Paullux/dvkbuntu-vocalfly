@@ -82,6 +82,10 @@ Column {
     }
     readonly property string artist: currentMetadata["xesam:artist"] || ""
     readonly property string albumArt: currentMetadata["mpris:artUrl"] || ""
+    
+    QLauncher {
+        id: qprocess
+    }
 
     //
     function containsMouse() {
@@ -182,9 +186,7 @@ Column {
             }
         }
     }
-    QLauncher {
-        id: qprocess
-    }
+
     // thumbnail container
     Item {
         id: thumbnail
@@ -453,8 +455,8 @@ Column {
 
     function generateTitle() {
         
-        if (genericName != undefined) { qprocess.launch('createWaveFromItem "' + appName.toString() + '"'); }
-        
+        if (appName != undefined) { qprocess.launch('createWaveFromItem "dock ' + appName.toString() + '"'); }
+
         if (!isWin) {            
             return genericName != undefined ? genericName : "";
         }
@@ -495,10 +497,12 @@ Column {
         if (text === "") {
             text = "—";
         }
+        
         return text.toString();
     }
 
     function generateSubText() {
+        
         if (activitiesParent === undefined) {
             return "";
         }

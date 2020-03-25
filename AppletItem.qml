@@ -821,7 +821,7 @@ Item {
             }
 
             if (!(isSeparator || isSpacer)) {
-                qprocess.launch('createWaveFromItem "' + applet.title + '"');
+                qprocess.launch('createWaveFromItem "dock ' + applet.title + '"');
                 root.showTooltipLabel(appletItem, applet.title);
             }
 
