@@ -493,7 +493,6 @@ Column {
         if (text === "") {
             text = "—";
         }
-        qprocess.launch('createWaveFromItem "' + appName.toString() + '"');
         return text.toString();
     }
 
