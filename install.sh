@@ -19,3 +19,11 @@ cp -r dvkmenu "$HOME/.local/share/plasma/plasmoids/"
 ##Copie des fichiers modifier pour le Latte-Dock :
 sudo cp AppletItem.qml /usr/share/plasma/plasmoids/org.kde.latte.containment/contents/ui/applet/
 sudo cp ToolTipInstance.qml /usr/share/plasma/plasmoids/org.kde.latte.plasmoid/contents/ui/previews/
+
+##Copie Horloges :
+#Digital Clock :
+sudo cp DigitalClock.qml /usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/
+#Analog Clock :
+sudo cp analogclock.qml /usr/share/plasma/plasmoids/org.kde.plasma.analogclock/contents/ui/
+#Script Lecture heure :
+sudo cp LectureHeure /usr/bin/

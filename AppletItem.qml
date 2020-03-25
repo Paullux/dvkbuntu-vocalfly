@@ -824,8 +824,7 @@ Item {
                 if (applet.pluginName !== 'org.kde.plasma.analogclock') {
                     qprocess.launch('createWaveFromItem "dock ' + applet.title + '"');
                 } else {
-                    qprocess.launch('createWaveFromItem ""');
-                    qprocess.launch('/usr/bin/LectureHeure')
+                    qprocess.launch('createWaveFromItem "dock ' + applet.title + ', cliquez pour avoir lheure"');
                 }
                 root.showTooltipLabel(appletItem, applet.title);
             }
@@ -921,6 +920,11 @@ Item {
         //! otherwise there were applets that did not receive them e.g. lock/logout applet
         //! when parabolic effect was used
         onPressed: mouse.accepted = false;
+        
+        onClicked: {
+            qprocess.launch('createWaveFromItem ""');
+            qprocess.launch('/usr/bin/LectureHeure')
+        }
         onReleased: mouse.accepted = false;
 
         onWheel: {
