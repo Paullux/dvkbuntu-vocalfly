@@ -821,7 +821,12 @@ Item {
             }
 
             if (!(isSeparator || isSpacer)) {
-                qprocess.launch('createWaveFromItem "dock ' + applet.title + '"');
+                if (applet.pluginName !== 'org.kde.plasma.analogclock') {
+                    qprocess.launch('createWaveFromItem "dock ' + applet.title + '"');
+                } else {
+                    qprocess.launch('createWaveFromItem ""');
+                    qprocess.launch('/usr/bin/LectureHeure')
+                }
                 root.showTooltipLabel(appletItem, applet.title);
             }
 
