@@ -8,4 +8,5 @@
 namespace global
 {
     extern QMediaPlayer player;
+    extern QString programdAvant;
 }

@@ -6,4 +6,5 @@
 namespace global
 {
     QMediaPlayer player;
+    QString programdAvant="Initialisation";
 }

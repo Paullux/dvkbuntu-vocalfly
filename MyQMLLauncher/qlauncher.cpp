@@ -15,6 +15,9 @@ QLauncher::QLauncher(QObject *parent):
 
 QString QLauncher::launch(const QString &program)
 {
+    if (program==global::programdAvant) {
+    return 0;
+    }
         m_process->start(program);
         m_process->waitForFinished(-1);
         QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
