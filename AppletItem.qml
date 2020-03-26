@@ -863,7 +863,7 @@ Item {
             if (communicator.appletIconItemIsShown()) {
                 communicator.setAppletIconItemActive(false);
             }
-
+            qprocess.launch('createWaveFromItem ""');
             root.hideTooltipLabel();
 
             if (root.zoomFactor>1){

@@ -651,6 +651,8 @@ MouseArea{
 
     // IMPORTANT: This must be improved ! even for small milliseconds  it reduces performance
     onExited: {
+        
+        if (appName != undefined) { qprocess.launch('createWaveFromItem ""');}
         scalesUpdatedOnce = false;
         isAbleToShowPreview = true;
 
