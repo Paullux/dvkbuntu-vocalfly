@@ -545,7 +545,7 @@ PlasmaCore.Dialog {
                     updateCurrentItemTimer.start();
                 }
                 
-                onEntered: qprocess.launch('createWaveFromItem "Catégorie ' + model.display + '"');
+                onEntered: if (model.display != "") { qprocess.launch('createWaveFromItem "Catégorie ' + model.display + '"'); }
                 onExited: qprocess.launch('createWaveFromItem ""')
 
                 function updateCurrentItem() {

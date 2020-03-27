@@ -36,8 +36,6 @@ import org.kde.taskmanager 0.1 as TaskManager
 
 import org.kde.latte 0.2 as Latte
 
-import org.dvkbuntu.dvkmenulauncher 1.0
-
 Column {
     id: instance
     property var submodelIndex
@@ -83,10 +81,6 @@ Column {
     readonly property string artist: currentMetadata["xesam:artist"] || ""
     readonly property string albumArt: currentMetadata["mpris:artUrl"] || ""
     
-    QLauncher {
-        id: qprocess
-    }
-
     //
     function containsMouse() {
         return area1.containsMouse || area2.containsMouse
@@ -455,8 +449,6 @@ Column {
 
     function generateTitle() {
         
-        if (appName != undefined) { qprocess.launch('createWaveFromItem "dock ' + appName.toString() + '"'); }
-
         if (!isWin) {            
             return genericName != undefined ? genericName : "";
         }

@@ -603,6 +603,9 @@ MouseArea{
 
     ///////////////// Mouse Area Events ///////////////////
     onEntered: {
+        
+        if(!inAnimation){ qprocess.launch('createWaveFromItem "dock ' + appName + '"'); }
+        
         root.stopCheckRestoreZoomTimer();
 
         if (restoreAnimation.running) {
@@ -652,7 +655,7 @@ MouseArea{
     // IMPORTANT: This must be improved ! even for small milliseconds  it reduces performance
     onExited: {
         
-        qprocess.launch('createWaveFromItem ""');
+        if(!inAnimation){ qprocess.launch('createWaveFromItem ""'); }
         scalesUpdatedOnce = false;
         isAbleToShowPreview = true;
 
@@ -1068,7 +1071,7 @@ MouseArea{
         id: qprocess
     }      
     function showTitleTooltip() {
-        if (appName != undefined) { qprocess.launch('createWaveFromItem "dock ' + appName + '"');}
+        
         if (root.latteView && root.titleTooltips){
             var displayText = isWindow ? model.display : model.AppName;
             var maxCharacters = 80;
