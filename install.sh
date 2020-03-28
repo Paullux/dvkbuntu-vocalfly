@@ -28,3 +28,16 @@ sudo cp DigitalClock.qml /usr/share/plasma/plasmoids/org.kde.plasma.digitalclock
 sudo cp analogclock.qml /usr/share/plasma/plasmoids/org.kde.plasma.analogclock/contents/ui/
 #Script Lecture heure :
 sudo cp LectureHeure /usr/bin/
+
+##Bar supérieur
+#QuickLaunch :
+sudo cp IconItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.quicklaunch/contents/ui/
+#Gestionnaire des tâches :
+sudo cp Task.qml /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/
+#Power Bouton :
+sudo cp lockout.qml /home/paulw/Bureau/plasma/plasmoids/org.kde.plasma.lock_logout/contents/ui/
+#Zone de Notifications :
+sudo cp AbstractItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/AbstractItem.qml
+sudo cp PlasmoidItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/PlasmoidItem.qml
+sudo cp StatusNotifierItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
+

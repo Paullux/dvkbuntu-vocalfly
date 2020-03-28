@@ -416,14 +416,19 @@ Item {
     }
     MouseArea {
         id: mouseArea
-
+        
+        hoverEnabled: true
+        
         property int wheelDelta: 0
 
         anchors.fill: parent
-
-        onClicked: { 
+        
+        onEntered: {
             qprocess.launch('createWaveFromItem ""');
             qprocess.launch("/usr/bin/LectureHeure");
+        }
+        
+        onClicked: { 
             plasmoid.expanded = !plasmoid.expanded
         }  
         onWheel: {
