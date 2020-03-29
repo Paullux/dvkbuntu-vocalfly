@@ -40,4 +40,4 @@ sudo cp lockout.qml /usr/share/plasma/plasmoids/org.kde.plasma.lock_logout/conte
 sudo cp AbstractItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 sudo cp PlasmoidItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 sudo cp StatusNotifierItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
-
+sudo cp ExpanderArrow.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/
