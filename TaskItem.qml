@@ -786,7 +786,7 @@ MouseArea{
             pressX = mouse.x;
             pressY = mouse.y;
 
-            if(draggingResistaner == null && !modAccepted)
+            if(draggingResistaner == null && !modAccepted)                
                 draggingResistaner = resistanerTimerComponent.createObject(taskItem);
         }
         else if (mouse.button == Qt.RightButton && !modAccepted){
@@ -862,16 +862,23 @@ MouseArea{
                                || ((root.leftClickAction === Latte.Types.PreviewWindows && !isGroupParent)) ) {
                         activateTask();
                     } else if (root.leftClickAction === Latte.Types.CycleThroughTasks) {
-                        if (isGroupParent)
+                        if (isGroupParent) {
+                            qprocess.launch('createWaveFromItem "Changement de fenêtre ' + taskItem.appName + '"');
                             subWindows.activateNextTask();
-                        else
+                        } else {
+                            if (taskItem.isActive) {
+                                qprocess.launch('createWaveFromItem "Réduction fenêtre ' + taskItem.appName + '"');
+                            } else {
+                                qprocess.launch('createWaveFromItem "Réouverture fenêtre ' + taskItem.appName + '"');
+                            }
                             activateTask();
+                        }
                     }
                 } else {
+                    qprocess.launch('createWaveFromItem "Ouverture ' + taskItem.appName + '"');
                     activateTask();
                 }
             }
-
             backend.cancelHighlightWindows();
         }
 

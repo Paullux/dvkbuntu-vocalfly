@@ -799,7 +799,7 @@ Item {
         id: appletMouseArea
 
         anchors.fill: parent
-        enabled: visible
+        enabled: true //visible
         hoverEnabled: latteApplet ? false : true
         propagateComposedEvents: true
 
@@ -807,7 +807,7 @@ Item {
         //! only to support springloading for plasma 5.10
         //! also on this is based the tooltips behavior by enabling it
         //! plasma tooltips are disabled
-        visible: acceptMouseEvents
+        visible: true //acceptMouseEvents
 
         property bool blockWheel: false
 
@@ -824,7 +824,8 @@ Item {
                 if (applet.pluginName !== 'org.kde.plasma.analogclock') {
                     qprocess.launch('createWaveFromItem "dock ' + applet.title + '"');
                 } else {
-                    qprocess.launch('createWaveFromItem "dock ' + applet.title + ', cliquez pour avoir lheure"');
+                    qprocess.launch('createWaveFromItem ""');
+                    qprocess.launch('/usr/bin/LectureHeure');
                 }
                 root.showTooltipLabel(appletItem, applet.title);
             }
@@ -872,6 +873,7 @@ Item {
         }
 
         onPositionChanged: {
+            
             if (originalAppletBehavior || !canBeHovered) {
                 mouse.accepted = false;
                 return;
@@ -919,12 +921,20 @@ Item {
         //! these are needed in order for these events to be really forwarded underneath
         //! otherwise there were applets that did not receive them e.g. lock/logout applet
         //! when parabolic effect was used
-        onPressed: mouse.accepted = false;
+        //onPressed: mouse.accepted = false;
         
-        onClicked: {
-            qprocess.launch('createWaveFromItem ""');
-            qprocess.launch('/usr/bin/LectureHeure')
+        onPressed: {
+            if (applet.title != "Latte Tasks") {
+                if (!isExpanded) {
+                    qprocess.launch('createWaveFromItem "Ouverture ' + applet.title + '"');
+                } else {
+                    qprocess.launch('createWaveFromItem "Fermeture ' + applet.title + '"');
+                }
+            }
+            latteView.toggleAppletExpanded(applet.id);
+            mouse.accepted = false;
         }
+        
         onReleased: mouse.accepted = false;
 
         onWheel: {
