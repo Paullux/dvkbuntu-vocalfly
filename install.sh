@@ -37,7 +37,7 @@ sudo cp Task.qml /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents
 #Power Bouton :
 sudo cp lockout.qml /home/paulw/Bureau/plasma/plasmoids/org.kde.plasma.lock_logout/contents/ui/
 #Zone de Notifications :
-sudo cp AbstractItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/AbstractItem.qml
-sudo cp PlasmoidItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/PlasmoidItem.qml
+sudo cp AbstractItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
+sudo cp PlasmoidItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 sudo cp StatusNotifierItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 
