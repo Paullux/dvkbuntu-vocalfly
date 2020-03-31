@@ -41,3 +41,11 @@ sudo cp AbstractItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.syst
 sudo cp PlasmoidItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 sudo cp StatusNotifierItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/items/
 sudo cp ExpanderArrow.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/
+
+
+#logout
+sudo cp Logout.qml /usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/logout/
+
+#Fenetre
+sudo cp DecorationButton.qml /usr/share/kwin/aurorae/
+sudo cp PlastikButton.qml /usr/share/kwin/decorations/kwin4_decoration_qml_plastik/contents/ui/
