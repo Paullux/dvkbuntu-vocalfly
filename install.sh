@@ -7,6 +7,14 @@ mkdir -p /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 sudo cp build-MyQMLLauncher-Desktop-Release/libMyQMLLauncher.so /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 sudo cp build-MyQMLLauncher-Desktop-Release/qmldir /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 
+##Ajout de la GUI :
+#Ajout du binaire :
+sudo cp VocalFly /usr/bin/
+#Ajout de l'icône
+sudo cp vocalflyicon.png /usr/share/icons/
+#Ajout du fichier desktop :
+sudo cp VocalFly.desktop /usr/share/applications/
+
 ##Ajout de script de création des waves à partir des textes :
 sudo cp createWaveFromItem /usr/bin/
 
