@@ -14,22 +14,18 @@ QLauncher::QLauncher(QObject *parent):
 
 QString QLauncher::launch(const QString &program)
 {
-    //if (global::programdAvant != program) {
-        //global::programdAvant = program;
-        global::player.stop();
-        m_process->kill();
-        m_process->start(program);
-        m_process->waitForFinished(-1);
-        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-        global::player.setVolume(50);
-        global::player.setMedia(QUrl::fromLocalFile(env.value("HOME") + "/.local/share/dvkbuntu/sonEnCours.wav"));
-        global::player.play();
-        QByteArray bytes = m_process->readAllStandardOutput();
-        QString output = QString::fromLocal8Bit(bytes);
-        return output;
-    /*} else {
-        return program;
-    }*/
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+
+    global::player.stop();
+    m_process->kill();
+    m_process->start(program);
+    m_process->waitForFinished(-1);
+    global::player.setVolume(50);
+    global::player.setMedia(QUrl::fromLocalFile(env.value("HOME") + "/.local/share/dvkbuntu/sonEnCours.wav"));
+    global::player.play();
+    QByteArray bytes = m_process->readAllStandardOutput();
+    QString output = QString::fromLocal8Bit(bytes);
+    return output;
 }
 
 QLauncher::~QLauncher()

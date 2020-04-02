@@ -1,0 +1,83 @@
+du coup /usr/bin/createWaveFromItem de viendrait :
+
+```bash
+#!/bin/bash
+
+tts() {
+ /etc/alternatives/tts "$1" "$2" "$3"
+}
+
+VOCALFLY=true
+
+if [[ "$VOCALFLY" == true ]]; then
+ mkdir -p "$HOME/.local/share/dvkbuntu/"
+ BCP47=$(printf $LANG | cut -d'.' -f1 | sed -e 's/_/-/g' | tr '[:upper:]' '[:lower:]')
+ tts "$1" "$BCP47" "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+ if [ $? -ne 0 ]
+ then
+  BCP47=$(printf "$BCP47" | cut -d'-' -f1)
+  tts "$1" "$BCP47" "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+ fi
+ if [ $? -ne 0 ]
+ then
+  tts "$1" "en" "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+ fi
+else
+ tts "              " "fr-fr" "$HOME/.local/share/dvkbuntu/sonEnCours.wav"
+fi
+```
+
+et il y aurais deux wrappers à installer dans  /etc/alternatives/ttsToWave :
+espeak-ng-multilanguage
+```bash
+#!/bin/bash
+if [ -f "$3" ];then
+  espeak-ng -v "$2" "$1" -w "$3"
+else
+ if [ ! -f "$2" ]; then
+  espeak-ng -v "$2" "$1"
+ else
+  espeak-ng -v "en" "$1"
+ fi
+fi
+
+```
+google_speech-multilanguage
+```bash
+#!/bin/bash
+if [ -f "$3" ];then
+ google_speech -l "$2" "$1" -o "$3"
+else
+ if [ ! -f "$2" ]; then
+  google_speech -l "$2" "$1"
+ else
+  google_speech -l "en" "$1"
+ fi
+fi
+```
+
+et dans ~/.bashrc :
+```bash
+export VocalFly=true # ou false
+```
+
+ paulw  paul-PC  ~  $  sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/local/bin/google_speech-multilanguage" 20
+update-alternatives: utilisation de « /usr/local/bin/google_speech-multilanguage » pour fournir « /etc/alternatives/tts.gz » (tts) en mode automatique
+ paulw  paul-PC  ~  $  sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/bin/espeak-ng-multilanguage" 15
+ 
+ 
+ paulw  paul-MS-7978  ~  $  sudo update-alternatives --remove tts /usr/bin/espeak 
+ paulw  paul-MS-7978  ~  $  sudo update-alternatives --remove tts /usr/bin/espeak_fr
+ paulw  paul-MS-7978  ~  $  sudo update-alternatives --remove tts /usr/local/bin/google_speech
+ paulw  paul-MS-7978  ~  $  sudo update-alternatives --remove tts /usr/local/bin/google_speech_fr
+
+/usr/bin/pkexec update-alternatives --set tts "/usr/local/bin/google_speech-multilanguage"
+/usr/bin/pkexec update-alternatives --set tts "/usr/bin/espeak-ng-multilanguage"
+/usr/bin/pkexec sed -i 's/VOCALFLY=.*$/VOCALFLY=false/' /usr/bin/createWaveFromItem
+/usr/bin/pkexec sed -i 's/VOCALFLY=.*$/VOCALFLY=true/' /usr/bin/createWaveFromItem
+
+/usr/bin/pkexec sh -c "update-alternatives --set tts '/usr/local/bin/google_speech-multilanguage' && sed -i 's/VOCALFLY=.*$/VOCALFLY=false/' /usr/bin/createWaveFromItem"
+/usr/bin/pkexec sh -c "update-alternatives --set tts '/usr/local/bin/google_speech-multilanguage' && sed -i 's/VOCALFLY=.*$/VOCALFLY=true/' /usr/bin/createWaveFromItem"
+/usr/bin/pkexec sh -c "update-alternatives --set tts '/usr/bin/espeak-ng-multilanguage' && sed -i 's/VOCALFLY=.*$/VOCALFLY=false/' /usr/bin/createWaveFromItem"
+/usr/bin/pkexec sh -c "update-alternatives --set tts '/usr/bin/espeak-ng-multilanguage' && sed -i 's/VOCALFLY=.*$/VOCALFLY=true/' /usr/bin/createWaveFromItem"
+

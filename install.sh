@@ -29,7 +29,7 @@ sudo cp analogclock.qml /usr/share/plasma/plasmoids/org.kde.plasma.analogclock/c
 #Script Lecture heure :
 sudo cp LectureHeure /usr/bin/
 
-##Bar supérieur
+##Bar supérieur :
 #QuickLaunch :
 sudo cp IconItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.quicklaunch/contents/ui/
 #Gestionnaire des tâches :
@@ -43,9 +43,21 @@ sudo cp StatusNotifierItem.qml /usr/share/plasma/plasmoids/org.kde.plasma.privat
 sudo cp ExpanderArrow.qml /usr/share/plasma/plasmoids/org.kde.plasma.private.systemtray/contents/ui/
 
 
-#logout
+#logout :
 sudo cp Logout.qml /usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/logout/
 
-#Fenetre
+#Fenetre :
 sudo cp DecorationButton.qml /usr/share/kwin/aurorae/
 sudo cp PlastikButton.qml /usr/share/kwin/decorations/kwin4_decoration_qml_plastik/contents/ui/
+
+#Wrapper
+sudo cp google_speech-multilanguage /usr/local/bin/
+sudo cp espeak-ng-multilanguage /usr/bin/
+
+#service tts alternatives :
+sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/local/bin/google_speech-multilanguage" 20
+sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/bin/espeak-ng-multilanguage" 15
+sudo update-alternatives --remove tts /usr/bin/espeak 
+sudo update-alternatives --remove tts /usr/bin/espeak_fr
+sudo update-alternatives --remove tts /usr/local/bin/google_speech
+sudo update-alternatives --remove tts /usr/local/bin/google_speech_fr
