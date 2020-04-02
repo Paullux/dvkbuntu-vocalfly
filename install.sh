@@ -9,11 +9,11 @@ sudo cp build-MyQMLLauncher-Desktop-Release/qmldir /usr/lib/x86_64-linux-gnu/qt5
 
 ##Ajout de la GUI :
 #Ajout du binaire :
-sudo cp VocalFly /usr/bin/
+sudo cp GUI/VocalFly /usr/bin/
 #Ajout de l'icône
-sudo cp vocalflyicon.png /usr/share/icons/
+sudo cp GUI/vocalflyicon.png /usr/share/icons/
 #Ajout du fichier desktop :
-sudo cp VocalFly.desktop /usr/share/applications/
+sudo cp GUI/VocalFly.desktop /usr/share/applications/
 
 ##Ajout de script de création des waves à partir des textes :
 sudo cp createWaveFromItem /usr/bin/
