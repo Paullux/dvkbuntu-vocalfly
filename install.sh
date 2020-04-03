@@ -7,6 +7,13 @@ mkdir -p /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 sudo cp build-MyQMLLauncher-Desktop-Release/libMyQMLLauncher.so /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 sudo cp build-MyQMLLauncher-Desktop-Release/qmldir /usr/lib/x86_64-linux-gnu/qt5/qml/org/dvkbuntu/dvkmenulauncher/
 
+##Voix :
+#Voix Google :
+sudo pip3 install google_speech
+#Voix EspeakNG :
+sudo apt install espeak-ng
+
+
 ##Ajout de la GUI :
 #Ajout du binaire :
 sudo cp GUI/VocalFly /usr/bin/
