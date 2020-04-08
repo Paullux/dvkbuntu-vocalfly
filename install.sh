@@ -11,7 +11,7 @@ sudo cp build-MyQMLLauncher-Desktop-Release/qmldir /usr/lib/x86_64-linux-gnu/qt5
 #Voix Google :
 sudo pip3 install google_speech
 #Voix EspeakNG :
-sudo apt install espeak-ng
+sudo apt install espeak-ng libttspico-utils alsa-utils
 
 
 ##Ajout de la GUI :
@@ -72,6 +72,7 @@ sudo cp espeak-ng-multilanguage /usr/bin/
 #service tts alternatives :
 sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/local/bin/google_speech-multilanguage" 20
 sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/bin/espeak-ng-multilanguage" 15
+sudo update-alternatives --install /etc/alternatives/tts.gz tts "/usr/bin/pico2wave-multilanguage" 10
 sudo update-alternatives --remove tts /usr/bin/espeak 
 sudo update-alternatives --remove tts /usr/bin/espeak_fr
 sudo update-alternatives --remove tts /usr/local/bin/google_speech
