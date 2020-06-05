@@ -4,6 +4,7 @@
 #include <QQuickItem>
 #include <QProcess>
 #include <QObject>
+#include <QFileInfo>
 
 class QLauncher : public QObject
 {
@@ -13,6 +14,9 @@ public:
     explicit QLauncher(QObject *parent = 0);
     ~QLauncher();
     Q_INVOKABLE QString launch(const QString &program);
+    bool fileExists;
+    QUrl path;
+    QString pathStr;
 
 protected:
     QProcess *m_process = new QProcess;
